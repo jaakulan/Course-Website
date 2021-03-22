@@ -1,0 +1,11 @@
+trying to get git to work was hard
+One of the websites had zero styling lol
+desgining stuff
+sidebar
+Dropdown menu
+The footer
+Flask:
+    caching
+    browser caching
+    no hover elements in inspect element
+    strange html parsing with flask templates

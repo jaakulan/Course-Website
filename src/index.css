@@ -1,0 +1,170 @@
+/* Fonts and sizes */
+p span h4 h3 h2 h1 {
+  font-family: Helvetica, Neue, Arial, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    color: #b58900;
+}
+
+a:hover {
+    color: #cb4b16;
+}
+
+.course_title {
+    text-align: center;
+    display: block;
+    align-self: flex-start;
+}
+
+#bar_and_content {
+    display: flex;
+    flex-direction: row;
+}
+
+.content_class {
+  align-self: flex-start;
+}
+
+/* Home Page flex box division */
+#index_rows {
+  /*height: 100%;*/
+  /*width:fit-content;*/
+    
+  position:sticky;
+  top:0;
+  align-self: flex-start;
+}
+
+.content {
+  padding-left: 20px;
+  width: 800px;
+}
+
+
+/* Side Bar Buttons */
+#buttons li {
+  display: block;
+  list-style: none;
+  text-align: center;
+  background-color: #2aa1985e;
+  margin-right: 30px;
+  width: 150px;
+  line-height: 50px;
+  border-radius: 10px;
+}
+
+#buttons li a {
+  text-decoration: none;
+  color: #FFFFFF;
+  display: block;
+}
+
+#buttons li a:hover {
+  text-decoration: none;
+  color: rgb(32, 31, 31);
+  background-color: #b58900;
+  border-radius: 10px; 
+}
+
+/* Drop down Button */
+.drop_button {
+  display: block;
+  color: #FFFFFF;
+  border: none;
+  list-style: none;
+  text-align: center;
+  background-color: #2aa1985e;
+  margin-right: 30px;
+  width: 150px;
+  line-height: 50px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.drop_down_menu {
+  position: relative;
+  display: inline-block;
+}
+
+.drop_down_items {
+  display: none;
+  position: absolute;
+  width: 150px;
+  height: fit-content;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.drop_down_items a {
+  color: black;
+  background-color: #0f565a;
+  text-decoration: none;
+  display: block;
+  padding: 8px 16px;
+}
+
+.drop_down_items a:hover {
+    background-color: #b58900;
+    /**/
+}
+
+.drop_down_menu:hover .drop_down_items {
+    display: flex;
+}
+
+.drop_down_menu:hover .drop_button {
+    background-color: #b58900;
+
+}
+
+body {
+    font-family: Helvetica, Neue, Arial, sans-serif;
+    background-color: #002b36;
+    display:flex;
+    flex-flow: column;
+    margin: 0;
+    width:100%;
+    height:100%;
+    color: #93a1a1;
+}
+
+#page {
+    align-items: stretch;
+    flex: 1 1 auto;
+    display:flex;
+    flex-direction: column;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+#footer { 
+    flex: 0 1 40px;
+    display:flex;
+    padding-top: 40px;
+    justify-content: space-between;
+    border-top-style: solid;
+    border-color: black;
+    border-top-width: 1px;
+    align-items: center;
+}
+
+#footer a {
+    align-self: flex-start;
+}
+
+#footer span {
+    text-align: center;
+    align-self: flex-start;
+}
+#footer div {
+    align-self: flex-start;
+}

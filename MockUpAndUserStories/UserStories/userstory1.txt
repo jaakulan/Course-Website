@@ -1,0 +1,1 @@
+As a student user, the student should be able to view the course description, detailing topics covered within the course (maybe prereqs?), upon visiting the site for the first time

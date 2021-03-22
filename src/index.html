@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewpoint" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+        <title>CSCB63 Website</title>
+    </head>
+    <body>
+        <div id='page'>
+            <div id="course_title">
+                <h1>CSCB63 -- Design and Analysis of Data Structures</h1>
+            </div>
+
+            <div id="bar_and_content">
+                <div id="index_rows">
+                    <div class="side_bar">
+                        <ul id="buttons">
+                            <li><a href="index.html"></i><h4>Home</h4></a></li>
+                            <li><a href="{{ url_for('static', filename='static/dummy.pdf') }}"><h4>Syllabus</h4></a></li>
+                            <li><a href="{{ url_for('static', filename='static/dummy.pdf') }}"><h4>Calendar</h4></a></li>
+                            <li><a href="csc.html"><h4>Course Schedule</h4></a></li>
+                            <li><a href="tutorials.html"><h4>Tutorials</h4></a></li>
+                            <li><a href="assignments.html"><h4>Assignments</h4></a></li>
+                            <li><a href="oldtests.html"><h4>Tests</h4></a></li>
+                            <li><a href="feedback.html"><h4>Feedback</h4></a></li>
+                            <li><a href="faq.html"><h4>FAQ</h4></a></li>
+                            <div class="drop_down_menu">
+                                <li><button class="drop_button"><b>External Sites</b></button></li>
+                                <div class="drop_down_items">
+                                    <a href="https://www.piazza.com/"><b>Piazza</b></a>
+                                    <a href="https://markus.utsc.utoronto.ca/"><b>Markus</b></a>
+                                    <a href="https://www.q.utoronto.ca/"><b>Quercus</b></a>
+                                    <a href="https://www.wolframalpha.com/"><b>Wolfram Alpha</b></a>
+                                </div>
+                            </div>
+                        </ul>
+
+                    </div>
+                </div>
+                {% block content %}
+                    <div class="content">
+                        <h2>Course Description</h2>
+                        <p>
+                            Design, analysis, implementation and comparison of efficient data structures for common abstract data types. 
+                            Priority queues: heaps and mergeable heaps. Dictionaries: balanced binary search trees, B-trees, hashing. 
+                            Amortization: data structures for managing dynamic tables and disjoint sets. Data structures for representing 
+                            graphs. Graph searches.<br><br>
+                        <b>Exclusion </b>descriptiodescriptio<br>
+                        <b>Prerequisites </b>descriptiodescriptio<br>
+                        </p>
+
+                        <h2>Instructor Information</h2>
+                        <p>Dr. Anna Bretscher</p>
+                    </div>
+                
+                {% endblock %}
+            </div>
+        </div>
+        <div id='footer'>
+            <a href='https://www.utsc.utoronto.ca/cms/faculty-of-computer-science'>Computer Science at UofT</a>
+            <span>Site design by Liam Naddell and Omer Raza Khan</span>
+            <div><span>Theme: </span><a href='https://ethanschoonover.com/solarized/'>Solarized</a></div>
+            </div> 
+    </body>
+</html>

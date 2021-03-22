@@ -1,0 +1,1 @@
+As a student user, the student can access a resources section containing external sources 

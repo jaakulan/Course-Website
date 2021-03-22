@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="content_class">
+    <h1>Old Tests and Exams -- For Studying</h1>
+    <h3>Test 2018</h3>
+    <p>This test literally has nothing to do with the current exam as a different teacher taught the class, hope you prepared well!</p>
+    <a href='{{ url_for('static', filename='static/dummy.pdf') }}'>test1.pdf</a>
+    <a href='{{ url_for('static', filename='static/dummy.pdf') }}'>test1sol.pdf</a>
+</div>
+{% endblock %}
