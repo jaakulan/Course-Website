@@ -1,2 +1,3 @@
 github bot
 creating the database -- everyone
+example queries -- Liam
