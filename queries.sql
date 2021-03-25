@@ -18,9 +18,9 @@ insert into feedback values("instructor1","I like x","I want you to do y","I lik
 .print "Get list of instructors"
 select utorid from accounts where instructor=true;
 
-.print "Get feedback for a instructor TYPO IN SCHEMA, likeintructor"
+.print "Get feedback for a instructor"
 
-select likeintructor, improveinstructor, likelabs, improvelabs from feedback where instructorid = "instructor1";
+select likeinstructor, improveinstructor, likelabs, improvelabs from feedback where instructorid = "instructor1";
 
 .print "getting all student's marks(instructor)"
 select a1,a2,a3,midterm,final,lab from marks;
