@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% block content %}
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='student_feedback.css') }}">
+        <div class="feedbck_content">
+        <h1>Feedback</h1>
+        <p>
+        Want to send anonymous feedback about the course? Fill out the form below! <br>
+        Select the appropriate instructor send feedback to
+        </p>
+        <form action="" method="POST">
+
+            <label for="instructor_names">Select Instructor Name</label>
+            <select id="instructors" name="instructors">
+            <option value="Abbas">Abbas Attarwala</option>
+            <option value="Anna Bretcher">Anna Bretcher</option>
+            </select><br>
+        
+            <label for="first_question">What do you like about the instructor teaching?</label>
+            <input type="text" id="first_question" name="first_quest" placeholder="Type here..."><br>
+        
+            <label for="second_question">What do you recommend the instructor to do to improve their teaching?</label>
+            <input type="text" id="second_question" name="second_quest" placeholder="Type here..."><br>
+
+            <label for="third_question">What do you like about the labs?</label>
+            <input type="text" id="third_question" name="third_quest" placeholder="Type here..."><br>
+
+            <label for="fourth_question">What do you recommend the lab instructors to do to improve their lab teaching?</label>
+            <input type="text" id="fourth_question" name="fourth_quest" placeholder="Type here..."><br>
+        
+            <label for="extra_feedbck">Is there anything else you would like to say?</label>
+            <textarea id="extra_feed_bck" name="long_feedbck" rows="10" cols="50" placeholder="Write something.."></textarea>
+            <br>
+        
+            <input type="submit" value="Submit">
+        
+        </form>
+        </div>
+    </body>
+</html>
+{% endblock %}
