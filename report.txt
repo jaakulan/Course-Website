@@ -2,3 +2,4 @@ github bot -- jak
 creating the database -- everyone
 example queries -- Liam
 flask->sql queries -- Liam
+authentication -- Liam

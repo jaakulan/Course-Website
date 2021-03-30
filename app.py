@@ -57,29 +57,41 @@ def update_marks(user: str,a1,a2,a3,midterm,lab,final):
 def get_remark_requests():
     return query_db('select utorid, reason,a1,a2,a3,midterm,lab,final from remarks');
 
+###-----------------------Flask code---------------------###
+
 #add query for adding user
 @app.route('/')
 def home():
-    db = get_db();
-    db.row_factory = make_dicts
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
-        return "Hello Boss!"
-        session['logged_in'] = False
-    db.close();
+        return render_template('index.html')
 
 @app.route('/login', methods=['POST'])
 def do_login():
+    db = get_db();
+    db.row_factory = make_dicts
     upass = get_user_and_pass(request.form['username']);
+    #sending password across internet lolololol+no salting/hashing
     print(upass)
-    if len(upass) != 0 and request.form['password'] == upass[0][1] :
+    if len(upass) != 0 and request.form['password'] == upass[0]["password"] :
         session['logged_in'] = True
     else:
+        #here for testing
         session['logged_in'] = False
         flash('wrong password!')
     return home()
+    db.close();
 
-#@app.route('/<page>.html')
-#def normal(page=None):
-#    return render_template(page+'.html')
+@app.route('/logout', methods=['POST'])
+def do_logout():
+    #security vulnerability here lololol
+    session['logged_in'] = False
+    return home()
+
+@app.route('/<page>.html')
+def normal(page=None):
+    if session['logged_in'] == True:
+        return render_template(page+'.html')
+    else:
+        return home()
