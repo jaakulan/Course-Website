@@ -33,14 +33,14 @@
                             </div>
                         </div>
 
-                        <div id="information">
+                        <form action='/login' method="POST" id="information">
                             <div class="input-param">Utorid</div>
-                            <input type="text" class="info" id="utorid" placeholder="Enter Utorid here...">
+                            <input name="username" type="text" class="info" id="utorid" placeholder="Enter Utorid here...">
                             <div class="input-param">Password</div>
-                            <input type="password" class="info" id="password" placeholder="Enter password here...">
+                            <input name="password" type="password" class="info" id="password" placeholder="Enter password here...">
                             <div id= "new_account"><a href="https://google.com">Make a new account...</a></div>
-                            <button id="utoridLog">Login</button>
-                        </div>
+                            <button type="submit" id="utoridLog">Login</button>
+                        </form>
                     </div>
                 </div>
 

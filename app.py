@@ -1,9 +1,11 @@
 from flask import Flask
 app = Flask(__name__)
-from flask import render_template, url_for, request, g
+from flask import Flask, flash, render_template, request, g,session, redirect, url_for, escape
+import sqlite3
+
 DATABASE='./cw.db'
 app.debug = True
-import sqlite3
+app.secret_key=b'abbas'
 
 def get_db():
     db=getattr(g,'_database',None)
@@ -21,7 +23,6 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
-#db.row_factory = make_dicts
 
 def query_db(query, args=(), one=False):
     cur = get_db().execute(query, args)
@@ -56,11 +57,29 @@ def update_marks(user: str,a1,a2,a3,midterm,lab,final):
 def get_remark_requests():
     return query_db('select utorid, reason,a1,a2,a3,midterm,lab,final from remarks');
 
+#add query for adding user
 @app.route('/')
-def hello():
-    print(get_user_and_pass('student1'));
-    print(get_marks('student1'));
-    return render_template('index.html')
-@app.route('/<page>.html')
-def normal(page=None):
-    return render_template(page+'.html')
+def home():
+    db = get_db();
+    db.row_factory = make_dicts
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        return "Hello Boss!"
+        session['logged_in'] = False
+    db.close();
+
+@app.route('/login', methods=['POST'])
+def do_login():
+    upass = get_user_and_pass(request.form['username']);
+    print(upass)
+    if len(upass) != 0 and request.form['password'] == upass[0][1] :
+        session['logged_in'] = True
+    else:
+        session['logged_in'] = False
+        flash('wrong password!')
+    return home()
+
+#@app.route('/<page>.html')
+#def normal(page=None):
+#    return render_template(page+'.html')
