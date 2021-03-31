@@ -5,7 +5,7 @@ import sqlite3
 
 DATABASE='./cw.db'
 app.debug = True
-app.secret_key=b'abbas'
+app.secret_key=b'abba'
 
 def get_db():
     db=getattr(g,'_database',None)
@@ -30,6 +30,12 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
+def modify_db(query, args=(), one=False):
+    db = get_db()
+    cur = db.execute(query, args)
+    db.commit()
+    cur.close()
+
 def get_user_and_pass(user: str):
     return query_db('select password,username from accounts where username=?',(user,));
 
@@ -40,7 +46,7 @@ def create_remark_request(user: str,reason: str, a1, a2, a3, midterm, lab, final
     return query_db('insert into remarks values(?,?,?,?,?,?,?,?)',(user,reason,a1,a2,a3,midterm,lab,final));
 
 def create_feedback(instructor: str, likeinstructor: str, improveinstructor: str, likelabs: str, improvelabs: str):
-    return query_db('insert into feedback values(?,?,?,?,?)',(instructor,likeinstructor,improveinstructor,likelabs,improvelabs));
+    return modify_db('insert into feedback values(?,?,?,?,?)',(instructor,likeinstructor,improveinstructor,likelabs,improvelabs));
 
 def all_instructors():
     return query_db('select utorid from accounts where instructor=true');
@@ -69,8 +75,6 @@ def home():
 
 @app.route('/login', methods=['POST'])
 def do_login():
-    db = get_db();
-    db.row_factory = make_dicts
     upass = get_user_and_pass(request.form['username']);
     #sending password across internet lolololol+no salting/hashing
     print(upass)
@@ -81,7 +85,21 @@ def do_login():
         session['logged_in'] = False
         flash('wrong password!')
     return home()
-    db.close();
+
+@app.route('/feedback', methods=['POST'])
+def feed_me():
+    f = request.form.to_dict()
+    print(f)
+    inst=f["instructors"]
+    q1=f['first_quest']
+    q2=f['second_quest']
+    q3=f['third_quest']
+    q4=f['fourth_quest']
+    q5=f['long_feedbck']
+    #def create_feedback(instructor: str, likeinstructor: str, improveinstructor: str, likelabs: str, improvelabs: str):
+    create_feedback(inst,q1,q2,q3,q4)
+    return "feedback posted long feedback ignored idiot haha xd"
+
 
 @app.route('/logout', methods=['POST'])
 def do_logout():
