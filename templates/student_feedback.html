@@ -12,8 +12,9 @@
 
             <label for="instructor_names">Select Instructor Name</label>
             <select id="instructors" name="instructors">
-            <option value="Abbas">Abbas Attarwala</option>
-            <option value="Anna Bretcher">Anna Bretcher</option>
+            {% for name in names %} 
+            <option value="{{name}}">{{name}}</option>
+            {% endfor %}
             </select><br>
         
             <label for="first_question">What do you like about the instructor teaching?</label>

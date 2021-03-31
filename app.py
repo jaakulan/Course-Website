@@ -2,17 +2,18 @@ from flask import Flask
 app = Flask(__name__)
 from flask import Flask, flash, render_template, request, g,session, redirect, url_for, escape
 import sqlite3
+import os
 
 DATABASE='./cw.db'
 app.debug = True
-app.secret_key=b'abba'
+app.secret_key=os.urandom(12)
 
 def get_db():
     db=getattr(g,'_database',None)
     if db is None:
         db=g._database=sqlite3.connect(DATABASE)
+    db.row_factory = make_dicts
     return db
-
 def make_dicts(cursor,row):
     return dict((cursor.description[idx][0], value)
                 for idx,value in enumerate(row))
@@ -98,7 +99,13 @@ def feed_me():
     q5=f['long_feedbck']
     #def create_feedback(instructor: str, likeinstructor: str, improveinstructor: str, likelabs: str, improvelabs: str):
     create_feedback(inst,q1,q2,q3,q4)
-    return "feedback posted long feedback ignored idiot haha xd"
+    return normal("student_feedback");
+
+@app.route('/feedback')
+def feedback_page():
+    hi = all_instructors();
+    names = list(map(lambda x: list(x.values())[0], hi))
+    return render_template('student_feedback.html', names=names)
 
 
 @app.route('/logout', methods=['POST'])
@@ -109,7 +116,7 @@ def do_logout():
 
 @app.route('/<page>.html')
 def normal(page=None):
-    if session['logged_in'] == True:
+    if 'logged_in' in session and session['logged_in'] == True:
         return render_template(page+'.html')
     else:
         return home()
