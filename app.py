@@ -8,16 +8,20 @@ DATABASE='./cw.db'
 app.debug = True
 app.secret_key=os.urandom(12)
 
+#copypasta
 def get_db():
     db=getattr(g,'_database',None)
     if db is None:
         db=g._database=sqlite3.connect(DATABASE)
     db.row_factory = make_dicts
     return db
+
+#copypasta
 def make_dicts(cursor,row):
     return dict((cursor.description[idx][0], value)
                 for idx,value in enumerate(row))
 
+#copypasta
 @app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)
@@ -25,48 +29,61 @@ def close_connection(exception):
         db.close()
 
 
+#copypasta
 def query_db(query, args=(), one=False):
     cur = get_db().execute(query, args)
     rv = cur.fetchall()
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
+#new function, executes operations that modify the database
 def modify_db(query, args=(), one=False):
     db = get_db()
     cur = db.execute(query, args)
     db.commit()
     cur.close()
 
+#helper func
 def get_user_and_pass(user: str):
     return query_db('select password,username from accounts where username=?',(user,));
 
+#helper func
 def get_marks(user: str):
     return query_db('select a1,a2,a3,midterm,final,lab from marks where utorid=?',(user,));
 
+#helper func
 def create_remark_request(user: str,reason: str, a1, a2, a3, midterm, lab, final):
     return query_db('insert into remarks values(?,?,?,?,?,?,?,?)',(user,reason,a1,a2,a3,midterm,lab,final));
 
+#helper func
 def create_feedback(instructor: str, likeinstructor: str, improveinstructor: str, likelabs: str, improvelabs: str):
     return modify_db('insert into feedback values(?,?,?,?,?)',(instructor,likeinstructor,improveinstructor,likelabs,improvelabs));
 
+#helper func
 def all_instructors():
     return query_db('select utorid from accounts where instructor=true');
 
+#helper func
 def get_feedback_for_instructor(instructor: str):
     return query_db('select likeinstructor, improveinstructor, likelabs, improvelabs from feedback where instructorid = ?',(instructor,));
 
+#helper func
 def get_all_marks(user: str):
     return query_db('select utorid, a1,a2,a3,midterm,final,lab from marks');
 
+#helper func
 def update_marks(user: str,a1,a2,a3,midterm,lab,final):
     return query_db('update marks set a1=?, a2=?, a3=?, midterm=?, final=?, lab=? where utorid = ?',(a1,a2,a3,midterm,lab,final,user));
 
+#helper func
 def get_remark_requests():
     return query_db('select utorid, reason,a1,a2,a3,midterm,lab,final from remarks');
 
 ###-----------------------Flask code---------------------###
 
 #add query for adding user
+
+#This directs the user to index or login depending on whether they are logged in
 @app.route('/')
 def home():
     if not session.get('logged_in'):
@@ -74,6 +91,7 @@ def home():
     else:
         return render_template('index.html')
 
+#checks if username/pass are correct and sets session accordingly
 @app.route('/login', methods=['POST'])
 def do_login():
     upass = get_user_and_pass(request.form['username']);
@@ -87,6 +105,7 @@ def do_login():
         flash('wrong password!')
     return home()
 
+#inserts new feedback into database
 @app.route('/feedback', methods=['POST'])
 def feed_me():
     f = request.form.to_dict()
@@ -101,19 +120,28 @@ def feed_me():
     create_feedback(inst,q1,q2,q3,q4)
     return normal("student_feedback");
 
+#Renders the feedback localhost:5000/feedback url
 @app.route('/feedback')
 def feedback_page():
     hi = all_instructors();
+    #turns instructors into a list of instructors like [instructor1,instructor2]
     names = list(map(lambda x: list(x.values())[0], hi))
     return render_template('student_feedback.html', names=names)
 
 
+#Logs out user
 @app.route('/logout', methods=['POST'])
 def do_logout():
     #security vulnerability here lololol
     session['logged_in'] = False
     return home()
 
+#page to display after logging out(redirection)
+@app.route('/logout', methods=['GET'])
+def after_logout():
+    return home()
+
+#Gatekeeps content depending on if they are logged in or not
 @app.route('/<page>.html')
 def normal(page=None):
     if 'logged_in' in session and session['logged_in'] == True:
