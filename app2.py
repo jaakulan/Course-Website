@@ -4,6 +4,9 @@ from flask import render_template, url_for
 app.debug = True
 
 @app.route('/')
-def hello():
+def login():
     return render_template('login.html')
 
+@app.route('/newAccount')
+def makeAccount():
+    return render_template('makeAccount.html')

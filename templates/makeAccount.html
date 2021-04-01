@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8"> 
+            <meta name="viewpoint" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+            <title>CSCB63 Login</title>
+        </head>
+        <body id='login_back'>
+            
+            <div id=newAccount>
+                <div id='pop_title'>
+                    <div id='title_text'>
+                        Make A New Account!
+                    </div>
+                    <div id='cancel'>
+                        <a id='cancel_text' href="/">X</a>
+                    </div>
+                </div>
+                <div id='pop_info'>
+                    <form action='/login' method="POST" id="information">
+                        <div class="input-param">Utorid</div>
+                        <input name="username" type="text" class="info" id="utorid" placeholder="Enter Utorid here...">
+                        <div class="input-param">Name</div>
+                        <input name="name" type="text" class="info" id="name" placeholder="Enter Your Name here...">
+                        <div class="input-param">Password</div>
+                        <input name="password" type="password" class="info" id="password" placeholder="Enter password here...">
+                        <div class="input-param">Choose the appropriate account type:</div>
+                        <div id="account">
+                            <select id="account_type">
+                                <option value="student">Student</option>
+                                <option value="instructor">Instructor</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" id="utoridLog">Create the Account</button>
+                    </form>
+                </div>
+            </div>  
+            
+        </body>
+    </html>

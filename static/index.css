@@ -168,13 +168,15 @@ html {
 #footer div {
     align-self: flex-start;
 }
-
+/*------------------------------------------------------------login CSS section------------------------------------------------*/
 /*login background image */
 #login-back {
   background-image: url(https://wallpaperbat.com/img/16304-artificial-intelligence-wallpaper-top-free-artificial.jpg);
   background-repeat: no-repeat;
   height: 100%;
-  width: 100%;
+  background-position: center;
+
+  background-size:cover;
 }
 
 #login-main{
@@ -306,3 +308,82 @@ html {
   margin-bottom: 10px;
 }
 
+
+/*--------------------------------------------------end of login CSS section------------------------------------------------*/
+/*------make account CSS section-----------*/
+#login_back {
+  background-image: url("account_background.png");
+  backdrop-filter: blur(5px);
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+
+}
+
+#newAccount{
+  background-color:rgba(255, 255, 255, 0.863);
+  height: 80%;
+  width: 60%;
+  margin:auto;
+  margin-top: 5%;
+  animation-duration: 0.5s;
+  animation-name: slidein;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slidein {
+  from {
+      margin-top: 0%;
+      
+  }
+  to {
+      margin-top: 5%;
+  }
+}
+
+#pop_title{
+  display: flex;
+  flex: 1;
+  background-color: rgb(29, 34, 80);;
+}
+
+#pop_info{
+  flex: 10;
+  margin-top:-3%;
+}
+
+#cancel{
+  flex:1;
+  background-color: red;
+  text-align: center;
+
+}
+
+#title_text{
+  flex:10;
+  font-size: 80px;
+  color: aliceblue;
+  text-align: center;
+}
+
+#cancel_text{
+  color: black;
+  font-weight: bolder;
+  font-size:90px;
+  text-decoration: none;
+}
+
+#cancel_text:hover {
+  color: white;
+}
+
+#account{
+  margin-left: 10%;
+}
+
+#account_type{
+  margin-bottom: 10px;
+}
+/*------end of makeAccount CSS section-----------*/
