@@ -103,6 +103,7 @@ def do_login():
     print(upass)
     if len(upass) != 0 and request.form['password'] == upass[0]["password"] :
         session['utorid'] = request.form['username'];
+        session['instructor'] = True if session['utorid'] in list(map(lambda x: list(x.values())[0], all_instructors())) else False
         session['logged_in'] = True
     else:
         #here for testing
