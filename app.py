@@ -91,6 +91,10 @@ def home():
     else:
         return render_template('index.html')
 
+@app.route('/newAccount')
+def newAccount():
+    return render_template('makeAccount.html')
+
 #checks if username/pass are correct and sets session accordingly
 @app.route('/login', methods=['POST'])
 def do_login():
