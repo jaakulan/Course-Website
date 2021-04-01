@@ -1,3 +1,9 @@
 {% extends "index.html" %}
 {% block content %}
+            {% for msg in feedback %} 
+                <p value="{{msg['likeinstructor']}}">{{msg['likeinstructor']}}</p>
+                <p value="{{msg['improveinstructor']}}">{{msg['improveinstructor']}}</p>
+                <p value="{{msg['likelabs']}}">{{msg['likelabs']}}</p>
+                <p value="{{msg['improvelabs']}}">{{msg['improvelabs']}}</p>
+            {% endfor %}
 {% endblock %}

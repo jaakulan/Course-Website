@@ -98,6 +98,7 @@ def do_login():
     #sending password across internet lolololol+no salting/hashing
     print(upass)
     if len(upass) != 0 and request.form['password'] == upass[0]["password"] :
+        session['utorid'] = request.form['username'];
         session['logged_in'] = True
     else:
         #here for testing
@@ -140,6 +141,17 @@ def do_logout():
 @app.route('/logout', methods=['GET'])
 def after_logout():
     return home()
+
+@app.route('/newAccount')
+def makeAccount():
+    return render_template('makeAccount.html')
+
+@app.route('/hate')
+def viewhate():
+    user = session['utorid'];
+    hate = get_feedback_for_instructor(user);
+    print(hate);
+    return render_template('hate.html', feedback=hate)
 
 #Gatekeeps content depending on if they are logged in or not
 @app.route('/<page>.html')
