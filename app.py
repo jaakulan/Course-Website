@@ -68,7 +68,7 @@ def get_feedback_for_instructor(instructor: str):
     return query_db('select likeinstructor, improveinstructor, likelabs, improvelabs from feedback where instructorid = ?',(instructor,));
 
 #helper func
-def get_all_marks(user: str):
+def get_all_marks():
     return query_db('select utorid, a1,a2,a3,midterm,final,lab from marks');
 
 #helper func
@@ -158,6 +158,19 @@ def viewremarks():
     requests = get_remark_requests()
     print(requests)
     return render_template('listremarks.html', feedback=requests)
+
+@app.route('/viewmarks')
+def viewmarks():
+    marks = get_all_marks();
+    print(marks)
+    return render_template('studmarks.html', marks=marks)
+
+@app.route('/studviewgrades')
+def viewstdmarks():
+    user = session['utorid'];
+    marks = get_marks(user);
+    print(marks)
+    return render_template('viewgrades.html', mark=marks[0])
 
 #Gatekeeps content depending on if they are logged in or not
 @app.route('/<page>.html')
