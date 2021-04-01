@@ -1,9 +1,2 @@
 check if gatekeep content works properly
 does localhost:5000/csc =localhost:5000/csc.html, is one accessible without login
-
-move login css section to new file
-add long form feedback section
-add names in
-cscb63 overlays utor logo on login page
-when creating student account, also create row for marks
-move this file to github

@@ -153,6 +153,12 @@ def viewhate():
     print(hate);
     return render_template('hate.html', feedback=hate)
 
+@app.route('/listremarks')
+def viewremarks():
+    requests = get_remark_requests()
+    print(requests)
+    return render_template('listremarks.html', feedback=requests)
+
 #Gatekeeps content depending on if they are logged in or not
 @app.route('/<page>.html')
 def normal(page=None):

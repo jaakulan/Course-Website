@@ -1,3 +1,13 @@
 {% extends "index.html" %}
 {% block content %}
+            {% for msg in feedback %} 
+                <p>{{msg['utorid']}}</p>
+                <p>{{msg['reason']}}</p>
+                <p>{{msg['a1']}}</p>
+                <p>{{msg['a2']}}</p>
+                <p>{{msg['a3']}}</p>
+                <p>{{msg['midterm']}}</p>
+                <p>{{msg['lab']}}</p>
+                <p>{{msg['final']}}</p>
+            {% endfor %}
 {% endblock %}
