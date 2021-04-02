@@ -176,7 +176,7 @@ def viewstdmarks():
     user = session['utorid'];
     marks = get_marks(user);
     print(marks)
-    return render_template('viewgrades.html', mark=marks[0])
+    return render_template('viewgrades.html', mark=marks[0], user=user)
 
 #Gatekeeps content depending on if they are logged in or not
 @app.route('/<page>.html')

@@ -1,10 +1,63 @@
 {% extends "index.html" %}
+
 {% block content %}
-    <p>{{mark['utorid']}}</p>
-    <p>{{mark['a1']}}</p>
-    <p>{{mark['a2']}}</p>
-    <p>{{mark['a3']}}</p>
-    <p>{{mark['midterm']}}</p>
-    <p>{{mark['final']}}</p>
-    <p>{{mark['lab']}}</p>
+
+<div class="inner_body">
+    <div id="spaced_title" class="big_title">
+        Grades for {{user}}
+    </div>
+
+    <div class='chart_header'>
+        <div class='mark_name'>Assesment</div>
+        <div class='due_date'> Due Date</div>
+        <div class='status'>Status</div>
+        <div class='score'>Score</div>
+        <div class='out_of'>Out of</div>
+    </div>
+
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Assignment 1: Graphs</div>
+        <div class='due_date'> January 4, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{mark['a1']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Assignment 2: Trees</div>
+        <div class='due_date'> January 24, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{mark['a2']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Assignment 3: Graphs</div>
+        <div class='due_date'> January 24, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{mark['a3']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Midterm</div>
+        <div class='due_date'> January 30, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{mark['midterm']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Labs</div>
+        <div class='due_date'> April 1, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{mark['lab']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Final</div>
+        <div class='due_date'> April 10, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{mark['final']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+
+            
+</div>
 {% endblock %}

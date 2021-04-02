@@ -387,12 +387,16 @@ html {
   margin-bottom: 10px;
 }
 /*------end of makeAccount CSS section-----------*/
-/*-----------------------start of viewMarks CSS-------------------*/
+/*-----------------------start of studarks, viewgrades CSS-------------------*/
 .big_title{
   margin-top: 2%;
   margin-left: 0.5%;
   font-size: 30px;
   font-weight: bolder;
+}
+
+#spaced_title{
+  margin-bottom: 4%;
 }
 
 .inner_body{
@@ -410,6 +414,7 @@ html {
   flex-direction: row;
   font-weight: 700;
   justify-content: space-between;
+  font-size: 20px;
   height: 60px;
   border-bottom: 3px solid rgb(105, 105, 105);
 }
@@ -418,6 +423,8 @@ html {
   border-bottom: 1px solid rgb(105, 105, 105);
   padding-top: 60px;
   font-weight: 500;
+  font-size: 17px;
+  color: white;
 }
 
 #light_header:hover{
