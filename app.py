@@ -166,9 +166,10 @@ def viewremarks():
 
 @app.route('/viewmarks')
 def viewmarks():
+    user = session['utorid'];
     marks = get_all_marks();
     print(marks)
-    return render_template('studmarks.html', marks=marks)
+    return render_template('studmarks.html', marks=marks, user=user)
 
 @app.route('/studviewgrades')
 def viewstdmarks():

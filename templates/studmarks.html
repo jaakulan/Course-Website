@@ -1,12 +1,68 @@
 {% extends "index.html" %}
 {% block content %}
-            {% for mark in marks %} 
-                <p>{{mark['utorid']}}</p>
-                <p>{{mark['a1']}}</p>
-                <p>{{mark['a2']}}</p>
-                <p>{{mark['a3']}}</p>
-                <p>{{mark['midterm']}}</p>
-                <p>{{mark['final']}}</p>
-                <p>{{mark['lab']}}</p>
-            {% endfor %}
+<div class="inner_body">
+    <div class="big_title">
+        All Student Grades:
+    </div>
+
+    {% for student in marks %} 
+
+    <div class='student_name'>Student: {{student['utorid']}}</div>
+
+    <div class='chart_header'>
+        <div class='mark_name'>Assesment</div>
+        <div class='due_date'> Due Date</div>
+        <div class='status'>Status</div>
+        <div class='score'>Score</div>
+        <div class='out_of'>Out of</div>
+    </div>
+
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Assignment 1: Graphs</div>
+        <div class='due_date'> January 4, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{student['a1']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Assignment 2: Trees</div>
+        <div class='due_date'> January 24, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{student['a2']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Assignment 3: Graphs</div>
+        <div class='due_date'> January 24, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{student['a3']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Midterm</div>
+        <div class='due_date'> January 30, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{student['midterm']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Labs</div>
+        <div class='due_date'> April 1, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{student['lab']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+    <div id='light_header' class='chart_header'>
+        <div class='mark_name'>Final</div>
+        <div class='due_date'> April 10, 2020 by 11:59pm</div>
+        <div class='status'>Submitted</div>
+        <div class='score'>{{student['final']}}</div>
+        <div class='out_of'>100</div>
+    </div>
+
+
+    {% endfor %}
+
+            
+</div>
 {% endblock %}
