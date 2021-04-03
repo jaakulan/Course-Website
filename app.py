@@ -129,10 +129,15 @@ def feed_me():
 #Renders the feedback localhost:5000/feedback url
 @app.route('/feedback')
 def feedback_page():
-    hi = all_instructors();
+    instructors = all_instructors();
     #turns instructors into a list of instructors like [instructor1,instructor2]
-    names = list(map(lambda x: list(x.values())[0], hi))
-    return render_template('student_feedback.html', names=names)
+    names = list(map(lambda x: list(x.values())[0], instructors))
+    user = session["utorid"]
+    print(user)
+    if (user in names):
+        return viewhate()
+    else:
+        return render_template('student_feedback.html', names=names)
 
 
 #Logs out user
@@ -155,8 +160,7 @@ def makeAccount():
 def viewhate():
     user = session['utorid'];
     hate = get_feedback_for_instructor(user);
-    print(hate);
-    return render_template('hate.html', feedback=hate)
+    return render_template('hate.html', feedback=hate, name=user)
 
 @app.route('/listremarks')
 def viewremarks():

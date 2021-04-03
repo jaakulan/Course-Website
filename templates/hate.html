@@ -1,9 +1,37 @@
 {% extends "index.html" %}
 {% block content %}
-            {% for msg in feedback %} 
-                <p value="{{msg['likeinstructor']}}">{{msg['likeinstructor']}}</p>
-                <p value="{{msg['improveinstructor']}}">{{msg['improveinstructor']}}</p>
-                <p value="{{msg['likelabs']}}">{{msg['likelabs']}}</p>
-                <p value="{{msg['improvelabs']}}">{{msg['improvelabs']}}</p>
-            {% endfor %}
+            <div class="feedbck_content">
+            <h1>Feedback</h1>
+            <p>
+            Here is the list of feedback of what students think about you, <b>{{name}}</b>.<br>
+            Take a moment to reflect on your current teaching habits by taking the advice of these students 
+            </p>
+            <h3>What do you like about the instructor teaching?</h3>
+            <ul id="first_quest">
+                {% for msg in feedback %}
+                    <li><p value="{{msg['likeinstructor']}}">{{msg['likeinstructor']}}</p></li>
+                {% endfor %}
+            </ul>
+
+            <h3>What do you recommend the instructor to do to improve their teaching?</h3>
+            <ul id="second_quest">
+                {% for msg in feedback %}
+                    <li><p value="{{msg['improveinstructor']}}">{{msg['improveinstructor']}}</p></li>
+                {% endfor %}
+            </ul>
+
+            <h3>What do you like about the labs?</h3>
+            <ul id="third_quest">
+                {% for msg in feedback %}
+                    <li><p value="{{msg['likelabs']}}">{{msg['likelabs']}}</p></li>
+                {% endfor %}
+            </ul>
+
+            <h3>What do you recommend the lab instructors to do to improve their lab teaching?</h3>
+            <ul id="fourth_quest">
+                {% for msg in feedback %}
+                    <li><p value="{{msg['improvelabs']}}">{{msg['improvelabs']}}</p></li>
+                {% endfor %}
+            </ul>
+            </div>
 {% endblock %}
