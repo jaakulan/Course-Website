@@ -135,7 +135,7 @@ def feedback_page():
     user = session["utorid"]
     print(user)
     if (user in names):
-        return viewhate()
+        return view_instructor_feedbck()
     else:
         return render_template('student_feedback.html', names=names)
 
@@ -156,11 +156,11 @@ def after_logout():
 def makeAccount():
     return render_template('makeAccount.html')
 
-@app.route('/hate')
-def viewhate():
+@app.route('/instructor_feedbck')
+def view_instructor_feedbck():
     user = session['utorid'];
     hate = get_feedback_for_instructor(user);
-    return render_template('hate.html', feedback=hate, name=user)
+    return render_template('instructor_feedback.html', feedback=hate, name=user)
 
 @app.route('/listremarks')
 def viewremarks():
