@@ -87,7 +87,7 @@ def get_remark_requests():
 @app.route('/')
 def home():
     if not session.get('logged_in'):
-        return render_template('login.html')
+        return render_template('login.html', wrongAccount ="")
     else:
         return render_template('index.html', instructor = session['instructor'])
 
@@ -108,7 +108,7 @@ def do_login():
     else:
         #here for testing
         session['logged_in'] = False
-        flash('wrong password!')
+        return render_template('login.html', wrongAccount = "Username or Password is Invalid!")
     return redirect('/');
 
 #inserts new feedback into database
