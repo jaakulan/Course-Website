@@ -109,7 +109,7 @@ def do_login():
         #here for testing
         session['logged_in'] = False
         flash('wrong password!')
-    return home()
+    return redirect('/');
 
 #inserts new feedback into database
 @app.route('/feedback', methods=['POST'])
@@ -145,6 +145,10 @@ def feedback_page():
 def do_logout():
     #security vulnerability here lololol
     session['logged_in'] = False
+    return redirect('/')
+
+@app.route('/login', methods=['GET'])
+def loginpage():
     return home()
 
 #page to display after logging out(redirection)
@@ -188,4 +192,4 @@ def normal(page=None):
     if 'logged_in' in session and session['logged_in'] == True:
         return render_template(page+'.html')
     else:
-        return home()
+        return redirect('/');
