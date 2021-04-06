@@ -93,7 +93,7 @@ def home():
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
-        return render_template('index.html')
+        return render_template('index.html', instructor = session['instructor'])
 
 @app.route('/newAccount')
 def newAccount():
@@ -136,14 +136,10 @@ def feed_me():
 def feedback_page():
     if session['logged_in'] == False:
         return redirect('/');
-    instructors = all_instructors();
-    #turns instructors into a list of instructors like [instructor1,instructor2]
-    names = list(map(lambda x: list(x.values())[0], instructors))
-    user = session["utorid"]
-    print(user)
-    if (user in names):
+    if (session['instructor']):
         return view_instructor_feedbck()
     else:
+        names = list(map(lambda x: list(x.values())[0], all_instructors()))
         return render_template('student_feedback.html', names=names)
 
 
