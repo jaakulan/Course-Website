@@ -114,8 +114,9 @@ def do_login():
 #inserts new feedback into database
 @app.route('/feedback', methods=['POST'])
 def feed_me():
+    if session['logged_in'] == False:
+        return redirect('/');
     f = request.form.to_dict()
-    print(f)
     inst=f["instructors"]
     q1=f['first_quest']
     q2=f['second_quest']
@@ -129,6 +130,8 @@ def feed_me():
 #Renders the feedback localhost:5000/feedback url
 @app.route('/feedback')
 def feedback_page():
+    if session['logged_in'] == False:
+        return redirect('/');
     instructors = all_instructors();
     #turns instructors into a list of instructors like [instructor1,instructor2]
     names = list(map(lambda x: list(x.values())[0], instructors))
@@ -162,18 +165,24 @@ def makeAccount():
 
 @app.route('/instructor_feedbck')
 def view_instructor_feedbck():
+    if 'logged_in' not in session or session['logged_in'] == False:
+        return redirect('/');
     user = session['utorid'];
     hate = get_feedback_for_instructor(user);
     return render_template('instructor_feedback.html', feedback=hate, name=user)
 
 @app.route('/listremarks')
 def viewremarks():
+    if 'logged_in' not in session or session['logged_in'] == False:
+        return redirect('/');
     requests = get_remark_requests()
     print(requests)
     return render_template('listremarks.html', feedback=requests)
 
 @app.route('/viewmarks')
 def viewmarks():
+    if 'logged_in' not in session or session['logged_in'] == False:
+        return redirect('/');
     user = session['utorid'];
     marks = get_all_marks();
     print(marks)
@@ -181,6 +190,8 @@ def viewmarks():
 
 @app.route('/studviewgrades')
 def viewstdmarks():
+    if 'logged_in' not in session or session['logged_in'] == False:
+        return redirect('/');
     user = session['utorid'];
     marks = get_marks(user);
     print(marks)
