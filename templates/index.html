@@ -21,9 +21,12 @@
                             <li><a href="{{ url_for('static', filename='static/dummy.pdf') }}"><h4>Syllabus</h4></a></li>
                             <li><a href="{{ url_for('static', filename='static/dummy.pdf') }}"><h4>Calendar</h4></a></li>
                             <li><a href="csc.html"><h4>Course Schedule</h4></a></li>
-                            <li><a href="listremarks"><h4>listremarks</h4></a></li>
-                            <li><a href="studviewgrades"><h4>studviewgrades</h4></a></li>
-                            <li><a href="viewmarks"><h4>viewmarks</h4></a></li>
+                            {% if instructor %}
+                            <li><a href="viewmarks"><h4>All Marks</h4></a></li>
+                            <li><a href="listremarks"><h4>Student Remarks</h4></a></li>
+                            {% else %}
+                            <li><a href="studviewgrades"><h4>Grades</h4></a></li>
+                            {% endif %}
                             <li><a href="tutorials.html"><h4>Tutorials</h4></a></li>
                             <li><a href="assignments.html"><h4>Assignments</h4></a></li>
                             <li><a href="oldtests.html"><h4>Tests</h4></a></li>
