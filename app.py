@@ -135,6 +135,7 @@ def feedback_page():
     if (session['instructor']):
         return view_instructor_feedbck()
     else:
+        names = list(map(lambda x: list(x.values())[0], all_instructors()))
         return render_template('student_feedback.html', names=names)
 
 
