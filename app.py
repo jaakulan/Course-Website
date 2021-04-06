@@ -7,6 +7,7 @@ import os
 DATABASE='./cw.db'
 app.debug = True
 app.secret_key=os.urandom(12)
+#app.secret_key='liam'
 
 #copypasta
 def get_db():
@@ -49,7 +50,7 @@ def get_user_and_pass(user: str):
 
 #helper func
 def get_marks(user: str):
-    return query_db('select a1,a2,a3,midterm,final,lab from marks where utorid=?',(user,));
+    return query_db('select a1,a2,a3,midterm,final,lab from marks where utorid=?',[user],True);
 
 #helper func
 def create_remark_request(user: str,reason: str, a1, a2, a3, midterm, lab, final):
@@ -63,6 +64,9 @@ def create_feedback(instructor: str, likeinstructor: str, improveinstructor: str
 def all_instructors():
     return query_db('select utorid from accounts where instructor=true');
 
+def all_students():
+    return query_db('select utorid from accounts where instructor=false');
+
 #helper func
 def get_feedback_for_instructor(instructor: str):
     return query_db('select likeinstructor, improveinstructor, likelabs, improvelabs from feedback where instructorid = ?',(instructor,));
@@ -73,7 +77,7 @@ def get_all_marks():
 
 #helper func
 def update_marks(user: str,a1,a2,a3,midterm,lab,final):
-    return query_db('update marks set a1=?, a2=?, a3=?, midterm=?, final=?, lab=? where utorid = ?',(a1,a2,a3,midterm,lab,final,user));
+    return modify_db('update marks set a1=?, a2=?, a3=?, midterm=?, final=?, lab=? where utorid = ?',(a1,a2,a3,midterm,lab,final,user));
 
 #helper func
 def get_remark_requests():
@@ -196,6 +200,33 @@ def viewstdmarks():
     marks = get_marks(user);
     print(marks)
     return render_template('viewgrades.html', mark=marks[0], user=user)
+
+@app.route('/modifygrades', methods=["POST"])
+def modifygrades():
+    user = request.form['user'];
+    a1 = request.form['a1'];
+    a2 = request.form['a2'];
+    a3 = request.form['a3'];
+    midterm = request.form['midterm'];
+    final = request.form['final'];
+    lab = request.form['lab'];
+    print(a1,a2,a3,midterm,final,lab)
+    #def update_marks(user: str,a1,a2,a3,midterm,lab,final):
+    update_marks(user,a1,a2,a3,midterm,lab,final);
+    return redirect('/editmarks');
+
+@app.route('/editmarks')
+def editmarks():
+    if 'logged_in' not in session or session['logged_in'] == False:
+        return redirect('/')
+    user = session['utorid'];
+    studlist = all_students();
+    #if you need this explained you probably put the mouse on the computer screen
+    studlist = list(map(lambda x: x['utorid'], studlist));
+    std = studlist[0]
+    marks = get_marks(std);
+    print(marks)
+    return render_template('editmarks.html', mark=marks, user=std, names=studlist)
 
 #Gatekeeps content depending on if they are logged in or not
 @app.route('/<page>.html')
