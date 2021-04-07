@@ -1,2 +1,5 @@
-check if gatekeep content works properly
-does localhost:5000/csc =localhost:5000/csc.html, is one accessible without login
+editmarks
+makeaccount
+newremark
+
+
