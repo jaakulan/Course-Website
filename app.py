@@ -4,7 +4,7 @@ from flask import Flask, flash, render_template, request, g,session, redirect, u
 import sqlite3
 import os
 
-DATABASE='./cw.db'
+DATABASE='./assignment3.db'
 app.debug = True
 app.secret_key=os.urandom(12)
 
