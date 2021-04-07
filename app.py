@@ -46,6 +46,7 @@ def modify_db(query, args=(), one=False):
 
 def newacct(pas,username,utorid,instructor):
     modify_db('insert into accounts values(?,?,?,?)', [pas,username,utorid,instructor])
+    modify_db('insert into marks values(?,?,?,?,?,?,?)', [utorid,0,0,0,0,0,0])
 
 #helper func
 def get_user_and_pass(user: str):
@@ -109,6 +110,8 @@ def modifyaccts():
     pas =request.form['pass']
     istructor = request.form['usr'] == 'instructor'
     newacct(pas,name,usr,istructor);
+    #create grades section here
+
     return redirect('/');
 
 #checks if username/pass are correct and sets session accordingly
