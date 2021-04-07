@@ -93,7 +93,6 @@ def get_remark_requests():
 #This directs the user to index or login depending on whether they are logged in
 @app.route('/')
 def home():
-    print("Isinstructor: ", session['instructor'])
     if not session.get('logged_in'):
         return render_template('login.html', wrongAccount = "",)
     else:
