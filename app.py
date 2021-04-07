@@ -95,7 +95,7 @@ def get_remark_requests():
 def home():
     print("Isinstructor: ", session['instructor'])
     if not session.get('logged_in'):
-        return render_template('login.html', wrongAccount ="",usrname=session['utorid'])
+        return render_template('login.html', wrongAccount = "",)
     else:
         return render_template('index.html', instructor = (session['instructor']),usrname=session['utorid'])
 
