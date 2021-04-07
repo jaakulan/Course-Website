@@ -9,6 +9,7 @@ async function getmarks(e) {
     const jsn = await response.json(); //extract JSON from the http response
     console.log(jsn);
     document.getElementById('user').setAttribute('value',person);
+    document.querySelector('.big_title').innerHTML="All "+person+"'s grades:"
 
     let elems = document.querySelectorAll('input.score');
     //a1
