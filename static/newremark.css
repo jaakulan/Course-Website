@@ -1,0 +1,67 @@
+/*----------------newremark-----------------------*/
+#remark_title{
+    margin-top: 2%;
+    margin-left: 2%;
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 4%;
+  }
+  
+  .remark_body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 2%;
+    padding-bottom: 2%;
+  
+  }
+  
+  #reason_box{
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #022730;
+    border-radius: 4px;
+    color: black;
+    opacity: 0.4;
+    margin-bottom: 2%;
+  }
+  
+  #remark_type{
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #023e4d;
+    color: white;
+    margin-bottom: 4%;
+  }
+  
+  #reason_box:focus {
+    border: 5px solid #555;
+  }
+  
+  #reason{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 2%;
+  }
+  
+  #sub_but{
+    background-color: #19515f;
+    border: none;
+    color: white;
+    padding: 16px 64px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bolder;
+    margin-left: 83%;
+  }
+  
+  #sub_but:hover{
+    background-color: #4CAF50;;
+  }
+  
+  /*----------------end newremarks-----------------------*/
