@@ -18,16 +18,16 @@
                     </div>
                 </div>
                 <div id='pop_info'>
-                    <form action='/login' method="POST" id="information">
+                    <form action='/makeacct' method="POST" id="information">
                         <div class="input-param">Utorid</div>
-                        <input name="utorid" type="text" class="info" id="utorid" placeholder="Enter Utorid here...">
+                        <input name="user" type="text" class="info" id="utorid" placeholder="Enter Utorid here...">
                         <div class="input-param">Username</div>
                         <input name="username" type="text" class="info" id="name" placeholder="Enter Your Name here...">
                         <div class="input-param">Password</div>
-                        <input name="password" type="password" class="info" id="password" placeholder="Enter password here...">
+                        <input name="pass" type="password" class="info" id="password" placeholder="Enter password here...">
                         <div class="input-param">Choose the appropriate account type:</div>
                         <div id="account">
-                            <select id="account_type">
+                            <select name='usr' id="account_type">
                                 <option value="student">Student</option>
                                 <option value="instructor">Instructor</option>
                             </select>

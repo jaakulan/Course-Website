@@ -7,7 +7,7 @@ import os
 DATABASE='./assignment3.db'
 app.debug = True
 app.secret_key=os.urandom(12)
-app.secret_key='liam'
+#app.secret_key='liam'
 
 #copypasta
 def get_db():
@@ -44,9 +44,12 @@ def modify_db(query, args=(), one=False):
     db.commit()
     cur.close()
 
+def newacct(pas,username,utorid,instructor):
+    modify_db('insert into accounts values(?,?,?,?)', [pas,username,utorid,instructor])
+
 #helper func
 def get_user_and_pass(user: str):
-    return query_db('select password,username from accounts where username=?',(user,));
+    return query_db('select password,username from accounts where utorid=?',(user,));
 
 #helper func
 def get_marks(user: str):
@@ -98,6 +101,15 @@ def home():
 @app.route('/newAccount')
 def newAccount():
     return render_template('makeAccount.html')
+
+@app.route('/makeacct', methods=['POST'])
+def modifyaccts():
+    usr = request.form['user']
+    name = request.form['username']
+    pas =request.form['pass']
+    istructor = request.form['usr'] == 'instructor'
+    newacct(pas,name,usr,istructor);
+    return redirect('/');
 
 #checks if username/pass are correct and sets session accordingly
 @app.route('/login', methods=['POST'])
