@@ -154,7 +154,7 @@ html {
     border-top-style: solid;
     border-color: black;
     border-top-width: 1px;
-    align-items: center;--
+    align-items: center;
 }
 
 #footer a {
@@ -237,10 +237,12 @@ html {
 
 .score{
   flex:1;
+  align-self: baseline;
 }
 
 .out_of{
   flex:1;
+  padding-left: 30px;
 }
 
 
