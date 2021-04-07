@@ -1,14 +1,32 @@
 {% extends "index.html" %}
 {% block content %}
+<div class="list_body">
+    <div id="list_title">
+        This is {{usrname}}'s list of Remarks!
+    </div>
+            {% for msg in feedback %}
+                {% if msg['a1']: %}
+                {% set asses = 'Assignment 1' %}
+                {% elif msg['a2']: %}
+                {% set asses = 'Assignment 2' %}
+                {% elif msg['a3']: %}
+                {% set asses = 'Assignment 3' %}
+                {% elif msg['midterm']: %}
+                {% set asses = 'Midterm' %}
+                {% elif msg['lab']: %}
+                {% set asses = 'Labs' %}
+                {% elif msg['final']: %}
+                {% set asses = 'Final' %}
+                {% endif %}
 
-            {% for msg in feedback %} 
-                <p>{{msg['utorid']}}</p>
-                <p>{{msg['reason']}}</p>
-                <p>{{msg['a1']}}</p>
-                <p>{{msg['a2']}}</p>
-                <p>{{msg['a3']}}</p>
-                <p>{{msg['midterm']}}</p>
-                <p>{{msg['lab']}}</p>
-                <p>{{msg['final']}}</p>
+                <div class="big_remark">
+                    <div class="remark_header">
+                         {{asses}} for {{msg['utorid']}}
+                    </div>
+                    <div class="reason_text">
+                        {{msg['reason']}}
+                    </div>
+                </div>
             {% endfor %}
+</div>
 {% endblock %}

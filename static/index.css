@@ -478,7 +478,7 @@ html {
 
 
 /*------end of viewMarks CSS section-----------*/
-/*----------------listremarks-----------------------*/
+/*----------------newremark-----------------------*/
 #remark_title{
   margin-top: 2%;
   margin-left: 2%;
@@ -542,4 +542,54 @@ html {
 
 #sub_but:hover{
   background-color: #4CAF50;;
+}
+
+/*----------------end newremarks-----------------------*/
+
+/*----------------start listremarks-----------------------*/
+
+.list_body{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-right: 2%;
+  padding-bottom: 2%;
+  padding-left: 2%
+}
+
+#list_title{
+  margin-top: 2%;
+  margin-left: 3%;
+  font-size: 30px;
+  font-weight: bolder;
+  margin-bottom: 2%;
+}
+
+.remark_header{
+  background-color: #19515f;
+  height: 30px;
+  width: 30%;
+  border-radius: 10px;
+  margin-bottom: -1%;
+  text-align: center;
+  padding-top: 10px;
+  font-weight: bolder;
+  color: white;
+  position: relative;
+}
+
+.reason_text{
+  padding-top: 30px;
+  padding-left: 10px;
+  min-height: 70%;
+  width: 60%;
+  background-color: rgba(255, 255, 255, 0.70);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
+  border-radius: 30px;
+  color: black;
+}
+
+.big_remark{
+  margin-bottom: 4%;
 }
