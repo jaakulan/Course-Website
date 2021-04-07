@@ -16,15 +16,16 @@
                 <div id="index_rows">
                     <div class="side_bar">
                         <ul id="buttons">
-                            <li><a href="index.html"></i><h4>Home</h4></a></li>
+                            <li><a href="/"></i><h4>Home</h4></a></li>
                             <li><form action="logout" method="POST"><button class="drop_button" type="submit">Logout</button></form></li>
                             <li><a href="{{ url_for('static', filename='static/dummy.pdf') }}"><h4>Syllabus</h4></a></li>
                             <li><a href="{{ url_for('static', filename='static/dummy.pdf') }}"><h4>Calendar</h4></a></li>
                             <li><a href="csc.html"><h4>Course Schedule</h4></a></li>
-                            {% if instructor %}
+                            {% if instructor==True: %}
                             <li><a href="viewmarks"><h4>All Marks</h4></a></li>
                             <li><a href="listremarks"><h4>Student's Remarks</h4></a></li>
                             <li><a href="instructor_feedback"><h4>Instructor Feedback</h4></a></li>
+                            <li><a href="/editmarks"><h4>Edit Marks</h5></a></li>
                             {% else %}
                             <li><a href="studviewgrades"><h4>Grades</h4></a></li>
                             <li><a href="newremark.html"><h4>New Remark</h4></a></li>
