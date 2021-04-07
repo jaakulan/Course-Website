@@ -1,20 +1,23 @@
 {% extends "index.html" %}
 {% block content %}
-<form action="/newremark" method="POST">
-    <p>reason</p>
-    <input type="text" name="reason">
-    <p>a1</p>
-    <input type="text" name="a1">
-    <p>a2</p>
-    <input type="text" name="a2">
-    <p>a3</p>
-    <input type="text" name="a3">
-    <p>midterm</p>
-    <input type="text" name="midterm">
-    <p>lab</p>
-    <input type="text" name="lab">
-    <p>final</p>
-    <input type="text" name="final">
-    <button type='submit'>hate</button>
-</form>
+<div class="remark_body">
+    <div id = remark_title>
+      Remark Request!
+    </div>
+    <form action="/newremark" method="POST">
+       <div id="reason">Reason For Remark (Make sure to put why you think each question on the Assesment needs to be Remarked!)</div>
+       <input type="text" id= "reason_box" name="reason">
+
+       <select name='assesment' id="remark_type">
+          <option value="a1">Assignment 1</option>
+          <option value="a2">Assignment 2</option>
+          <option value="a3">Assignment 3</option>
+          <option value="midterm">Midterm</option>
+          <option value="lab">Labs</option>
+          <option value="final">Final</option>
+       </select>
+     <button type='submit'>Submit</button>
+    </form>
+
+</div>
 {% endblock %}
