@@ -167,12 +167,17 @@ def do_logout():
 def newremark():
     usr = session['utorid'];
     reason = request.form['reason']
-    a1 = request.form['a1']
-    a2 = request.form['a2']
-    a3 = request.form['a3']
-    midterm = request.form['midterm']
-    lab = request.form['lab']
-    final = request.form['final']
+    a1 = request.form['assignment'] == "a1"
+
+    a2 = request.form['assignment'] == "a2"
+
+    a3 = request.form['assignment'] == "a3"
+
+    midterm = request.form['assignment'] == "midterm"
+
+    lab = request.form['assignment'] == "lab"
+
+    final = request.form['assignment'] == "final"
     create_remark_request(usr,reason, a1, a2, a3, midterm, lab, final)
     print(usr,reason,a1,a2,a3,midterm,lab,final);
     return redirect('/newremark.html')
