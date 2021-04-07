@@ -94,13 +94,13 @@ def get_remark_requests():
 @app.route('/')
 def home():
     if not session.get('logged_in'):
-        return render_template('login.html', wrongAccount ="")
+        return render_template('login.html', wrongAccount ="",usrname=session['utorid'])
     else:
-        return render_template('index.html', instructor = session['instructor'])
+        return render_template('index.html', instructor = session['instructor'],usrname=session['utorid'])
 
 @app.route('/newAccount')
 def newAccount():
-    return render_template('makeAccount.html')
+    return render_template('makeAccount.html',usrname=session['utorid'])
 
 @app.route('/makeacct', methods=['POST'])
 def modifyaccts():
@@ -124,7 +124,7 @@ def do_login():
     else:
         #here for testing
         session['logged_in'] = False
-        return render_template('login.html', wrongAccount = "Username or Password is Invalid!")
+        return render_template('login.html', wrongAccount = "Username or Password is Invalid!",usrname=session['utorid'])
     return redirect('/');
 
 #inserts new feedback into database
@@ -152,7 +152,7 @@ def feedback_page():
         return view_instructor_feedbck()
     else:
         names = list(map(lambda x: list(x.values())[0], all_instructors()))
-        return render_template('student_feedback.html', names=names)
+        return render_template('student_feedback.html', names=names,usrname=session['utorid'])
 
 
 #Logs out user
@@ -188,7 +188,7 @@ def after_logout():
 
 @app.route('/newAccount')
 def makeAccount():
-    return render_template('makeAccount.html')
+    return render_template('makeAccount.html',usrname=session['utorid'])
 
 @app.route('/instructor_feedbck')
 def view_instructor_feedbck():
@@ -196,7 +196,7 @@ def view_instructor_feedbck():
         return redirect('/');
     user = session['utorid'];
     hate = get_feedback_for_instructor(user);
-    return render_template('instructor_feedback.html', feedback=hate, name=user)
+    return render_template('instructor_feedback.html', feedback=hate, name=user,usrname=session['utorid'])
 
 @app.route('/listremarks')
 def viewremarks():
@@ -204,7 +204,7 @@ def viewremarks():
         return redirect('/');
     requests = get_remark_requests()
     print(requests)
-    return render_template('listremarks.html', feedback=requests)
+    return render_template('listremarks.html', feedback=requests,usrname=session['utorid'])
 
 @app.route('/viewmarks')
 def viewmarks():
@@ -213,7 +213,7 @@ def viewmarks():
     user = session['utorid'];
     marks = get_all_marks();
     print(marks)
-    return render_template('studmarks.html', marks=marks, user=user)
+    return render_template('studmarks.html', marks=marks, user=user,usrname=session['utorid'])
 
 @app.route('/studviewgrades')
 def viewstdmarks():
@@ -222,7 +222,7 @@ def viewstdmarks():
     user = session['utorid'];
     marks = get_marks(user);
     print(marks)
-    return render_template('viewgrades.html', mark=marks[0], user=user)
+    return render_template('viewgrades.html', mark=marks, user=user,usrname=session['utorid'])
 
 @app.route('/modifygrades', methods=["POST"])
 def modifygrades():
@@ -258,12 +258,12 @@ def editmarks():
     std = studlist[0]
     marks = get_marks(std);
     print(marks)
-    return render_template('editmarks.html', mark=marks, user=std, names=studlist)
+    return render_template('editmarks.html', mark=marks, user=std, names=studlist,usrname=session['utorid'])
 
 #Gatekeeps content depending on if they are logged in or not
 @app.route('/<page>.html')
 def normal(page=None):
     if 'logged_in' in session and session['logged_in'] == True:
-        return render_template(page+'.html')
+        return render_template(page+'.html',usrname=session['utorid'])
     else:
         return redirect('/');

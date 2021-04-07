@@ -23,9 +23,11 @@
                             <li><a href="csc.html"><h4>Course Schedule</h4></a></li>
                             {% if instructor %}
                             <li><a href="viewmarks"><h4>All Marks</h4></a></li>
-                            <li><a href="listremarks"><h4>Student Remarks</h4></a></li>
+                            <li><a href="listremarks"><h4>Student's Remarks</h4></a></li>
+                            <li><a href="instructor_feedback"><h4>Instructor Feedback</h4></a></li>
                             {% else %}
                             <li><a href="studviewgrades"><h4>Grades</h4></a></li>
+                            <li><a href="newremark.html"><h4>New Remark</h4></a></li>
                             {% endif %}
                             <li><a href="tutorials.html"><h4>Tutorials</h4></a></li>
                             <li><a href="assignments.html"><h4>Assignments</h4></a></li>
@@ -67,6 +69,7 @@
         <div id='footer'>
             <a href='https://www.utsc.utoronto.ca/cms/faculty-of-computer-science'>Computer Science at UofT</a>
             <span>Site design by Liam Naddell, Omer Raza Khan, Jaakulan Subeethakumar</span>
+            <span>Hello {{usrname}}</span>
             <div><span>Theme: </span><a href='https://ethanschoonover.com/solarized/'>Solarized</a></div>
             </div> 
     </body>
