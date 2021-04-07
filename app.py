@@ -7,7 +7,7 @@ import os
 DATABASE='./assignment3.db'
 app.debug = True
 app.secret_key=os.urandom(12)
-#app.secret_key='liam'
+app.secret_key='liam'
 
 #copypasta
 def get_db():
@@ -57,7 +57,7 @@ def get_marks(user: str):
 
 #helper func
 def create_remark_request(user: str,reason: str, a1, a2, a3, midterm, lab, final):
-    return query_db('insert into remarks values(?,?,?,?,?,?,?,?)',(user,reason,a1,a2,a3,midterm,lab,final));
+    return modify_db('insert into remarks values(?,?,?,?,?,?,?,?)',(user,reason,a1,a2,a3,midterm,lab,final));
 
 #helper func
 def create_feedback(instructor: str, likeinstructor: str, improveinstructor: str, likelabs: str, improvelabs: str):
@@ -161,6 +161,21 @@ def do_logout():
     #security vulnerability here lololol
     session['logged_in'] = False
     return redirect('/')
+
+@app.route('/newremark', methods=['POST'])
+def newremark():
+    usr = session['utorid'];
+    reason = request.form['reason']
+    a1 = request.form['a1']
+    a2 = request.form['a2']
+    a3 = request.form['a3']
+    midterm = request.form['midterm']
+    lab = request.form['lab']
+    final = request.form['final']
+    create_remark_request(usr,reason, a1, a2, a3, midterm, lab, final)
+    print(usr,reason,a1,a2,a3,midterm,lab,final);
+    return redirect('/newremark.html')
+
 
 @app.route('/login', methods=['GET'])
 def loginpage():
