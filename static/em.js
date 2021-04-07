@@ -1,9 +1,11 @@
-let ops = document.querySelectorAll('option');
-ops[0].addEventListener('click',getmarks);
-ops[1].addEventListener('click',getmarks);
+//let ops = document.querySelectorAll('option');
+//ops[0].addEventListener('click',getmarks);
+//ops[1].addEventListener('click',getmarks);
+document.getElementById('studform').addEventListener('submit', getmarks);
 
 async function getmarks(e) {
-    let person = e.target.getAttribute('value');
+    let person = e.target.querySelector('#studname').value
+    e.preventDefault()
     const url='http://localhost:5000/getmarks?user='+person
     const response = await fetch(url);
     const jsn = await response.json(); //extract JSON from the http response
