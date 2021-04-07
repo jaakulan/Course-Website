@@ -81,7 +81,7 @@ def get_all_marks():
 
 #helper func
 def update_marks(user: str,a1,a2,a3,midterm,lab,final):
-    return modify_db('update marks set a1=?, a2=?, a3=?, midterm=?, final=?, lab=? where utorid = ?',(a1,a2,a3,midterm,lab,final,user));
+    return modify_db('update marks set a1=?, a2=?, a3=?, midterm=?, final=?, lab=? where utorid = ?',(a1,a2,a3,midterm,final,lab, user));
 
 #helper func
 def get_remark_requests():
