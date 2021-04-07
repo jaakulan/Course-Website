@@ -46,7 +46,8 @@ def modify_db(query, args=(), one=False):
 
 def newacct(pas,username,utorid,instructor):
     modify_db('insert into accounts values(?,?,?,?)', [pas,username,utorid,instructor])
-    modify_db('insert into marks values(?,?,?,?,?,?,?)', [utorid,0,0,0,0,0,0])
+    if (instructor == False):
+        modify_db('insert into marks values(?,?,?,?,?,?,?)', [utorid,0,0,0,0,0,0])
 
 #helper func
 def get_user_and_pass(user: str):
