@@ -7,7 +7,7 @@ import os
 DATABASE='./cw.db'
 app.debug = True
 app.secret_key=os.urandom(12)
-#app.secret_key='liam'
+app.secret_key='liam'
 
 #copypasta
 def get_db():
@@ -210,6 +210,15 @@ def modifygrades():
     #def update_marks(user: str,a1,a2,a3,midterm,lab,final):
     update_marks(user,a1,a2,a3,midterm,lab,final);
     return redirect('/editmarks');
+
+@app.route('/getmarks', methods=['GET'])
+def returnmarks():
+    if 'logged_in' not in session or session['logged_in'] == False:
+        return "go away"
+    user = request.args.get('user')
+    marks = get_marks(user);
+    print(marks)
+    return marks
 
 @app.route('/editmarks')
 def editmarks():

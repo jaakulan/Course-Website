@@ -15,7 +15,7 @@
     </div>
 
     <form action='/modifygrades' method='POST'>
-        <input type = "hidden" name = "user" value = "{{user}}"/>
+        <input id='user' type = "hidden" name = "user" value = "{{user}}"/>
         <div class='chart_header'>
             <div class='mark_name'>Assesment</div>
             <div class='due_date'> Due Date</div>
@@ -69,4 +69,5 @@
         <input type="submit" value="Submit">
     </form>
 </div>
+<script src="{{url_for('static', filename='em.js')}}"></script>
 {% endblock %}
