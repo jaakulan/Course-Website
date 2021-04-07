@@ -2,13 +2,14 @@
 {% block content %}
 <div class="inner_body">
     <p>pick student</p>
-    <form>
+    <form id='studform'> 
         <label for="studname">Select Student Name</label>
         <select id="studname" name="studname">
         {% for name in names %} 
         <option value="{{name}}">{{name}}</option>
         {% endfor %}
         </select><br>
+        <button type="submit">Submit</button>
     </form>
     <div class="big_title">
         All {{user}}'s grades:
