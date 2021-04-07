@@ -66,10 +66,12 @@
   
   .score{
     flex:1;
+    align-self: baseline;
   }
   
   .out_of{
     flex:1;
+    padding-left: 30px;
   }
   
   
