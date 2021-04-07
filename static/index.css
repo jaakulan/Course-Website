@@ -308,6 +308,21 @@ html {
   margin-bottom: 10px;
 }
 
+.error{
+  margin-left: 10%;
+  color: red;
+  animation-duration: 0.2s;
+  animation-name: shake;
+}
+
+@keyframes shake {
+  from {
+    margin-left:40%
+  }
+  to{
+    margin-left: 10%;
+  }
+}
 
 /*--------------------------------------------------end of login CSS section------------------------------------------------*/
 /*------make account CSS section-----------*/
