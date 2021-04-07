@@ -238,8 +238,9 @@ html {
   background-color: rgba(255, 255, 255, 0.8);
   margin: auto;
   width:70%;
-  height: 70%;
+  min-height: 70%;
   border-radius: 50px;
+  padding-bottom: 10px;
 }
 
 #logo{
@@ -338,14 +339,15 @@ html {
 
 #newAccount{
   background-color:rgba(255, 255, 255, 0.863);
-  height: 80%;
+  min-height: 80%;
   width: 60%;
   margin:auto;
-  margin-top: 5%;
+  margin-top: 2%;
   animation-duration: 0.5s;
   animation-name: slidein;
   display: flex;
   flex-direction: column;
+  padding-bottom: 10px;
 }
 
 @keyframes slidein {
