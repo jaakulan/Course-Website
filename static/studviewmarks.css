@@ -73,6 +73,18 @@
     flex:1;
     padding-left: 30px;
   }
+
+  #editor{
+    max-width: 30px;
+    height: 30%;
+    color: white;
+    background-color: #13596b;
+    margin-right: 10%;
+  }
   
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 1; /* Firefox */
+  }
   
   /*------end of viewMarks CSS section-----------*/
